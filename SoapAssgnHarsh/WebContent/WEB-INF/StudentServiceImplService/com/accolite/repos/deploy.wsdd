@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from StudentServiceImplService WSDL service -->
+
+  <service name="StudentServiceImpl" provider="java:RPC" style="rpc" use="encoded">
+      <parameter name="wsdlTargetNamespace" value="http://repos.accolite.com"/>
+      <parameter name="wsdlServiceElement" value="StudentServiceImplService"/>
+      <parameter name="schemaUnqualified" value="http://repos.accolite.com"/>
+      <parameter name="wsdlServicePort" value="StudentServiceImpl"/>
+      <parameter name="className" value="com.accolite.repos.StudentServiceImpl"/>
+      <parameter name="wsdlPortType" value="StudentServiceImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://repos.accolite.com" xmlns:rtns="http://repos.accolite.com" name="get_student" qname="operNS:get_student" returnQName="get_studentReturn" returnType="rtns:Student" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="id" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://repos.accolite.com" name="add_student" qname="operNS:add_student" soapAction="">
+        <parameter xmlns:tns="http://repos.accolite.com" qname="stu" type="tns:Student"/>
+      </operation>
+      <operation xmlns:operNS="http://repos.accolite.com" name="delete_student" qname="operNS:delete_student" soapAction="">
+        <parameter xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="id" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://repos.accolite.com" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="num_of_scholar" qname="operNS:num_of_scholar" returnQName="num_of_scholarReturn" returnType="rtns:int" soapAction="">
+      </operation>
+      <parameter name="allowedMethods" value="num_of_scholar delete_student get_student add_student"/>
+
+      <typeMapping xmlns:ns="http://repos.accolite.com" qname="ns:Student" type="java:com.accolite.repos.Student" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+  </service>
+</deployment>

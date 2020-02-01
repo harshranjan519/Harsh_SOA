@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://repos.accolite.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://repos.accolite.com" xmlns:intf="http://repos.accolite.com" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema targetNamespace="http://repos.accolite.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+   <complexType name="Student">
+    <sequence>
+     <element name="id" nillable="true" type="xsd:string"/>
+     <element name="marks" type="xsd:double"/>
+     <element name="name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="add_studentResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="add_studentRequest">
+
+      <wsdl:part name="stu" type="impl:Student">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="num_of_scholarRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="delete_studentResponse">
+
+   </wsdl:message>
+
+   <wsdl:message name="get_studentRequest">
+
+      <wsdl:part name="id" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="num_of_scholarResponse">
+
+      <wsdl:part name="num_of_scholarReturn" type="xsd:int">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="get_studentResponse">
+
+      <wsdl:part name="get_studentReturn" type="impl:Student">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="delete_studentRequest">
+
+      <wsdl:part name="id" type="xsd:string">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="StudentServiceImpl">
+
+      <wsdl:operation name="get_student" parameterOrder="id">
+
+         <wsdl:input message="impl:get_studentRequest" name="get_studentRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:get_studentResponse" name="get_studentResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="add_student" parameterOrder="stu">
+
+         <wsdl:input message="impl:add_studentRequest" name="add_studentRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:add_studentResponse" name="add_studentResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="delete_student" parameterOrder="id">
+
+         <wsdl:input message="impl:delete_studentRequest" name="delete_studentRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:delete_studentResponse" name="delete_studentResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="num_of_scholar">
+
+         <wsdl:input message="impl:num_of_scholarRequest" name="num_of_scholarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:num_of_scholarResponse" name="num_of_scholarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="StudentServiceImplSoapBinding" type="impl:StudentServiceImpl">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="get_student">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="get_studentRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://repos.accolite.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="get_studentResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://repos.accolite.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="add_student">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="add_studentRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://repos.accolite.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="add_studentResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://repos.accolite.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="delete_student">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="delete_studentRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://repos.accolite.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="delete_studentResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://repos.accolite.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="num_of_scholar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="num_of_scholarRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://repos.accolite.com" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="num_of_scholarResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://repos.accolite.com" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="StudentServiceImplService">
+
+      <wsdl:port binding="impl:StudentServiceImplSoapBinding" name="StudentServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/SoapAssgn/services/StudentServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
